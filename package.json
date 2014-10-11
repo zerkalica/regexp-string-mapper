@@ -1,6 +1,6 @@
 {
   "name": "regexp-string-mapper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Map tokens in string to values. Supports custom token types",
   "main": "index.js",
   "scripts": {
