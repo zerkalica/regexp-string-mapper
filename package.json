@@ -1,0 +1,37 @@
+{
+  "name": "regexp-string-mapper",
+  "version": "0.0.1",
+  "description": "Map tokens in string to values. Supports custom token types",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerkalica/regexp-string-mapper.git"
+  },
+  "keywords": [
+    "string",
+    "format",
+    "map",
+    "mapping",
+    "strtok",
+    "string",
+    "token"
+  ],
+  "author": "Sergey Yuferev <nexor@ya.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zerkalica/regexp-string-mapper/issues"
+  },
+  "homepage": "https://github.com/zerkalica/regexp-string-mapper",
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "mocha": "^1.21.4"
+  },
+  "dependencies": {
+    "circular-serializer": "^0.0.3",
+    "moment": "^2.8.3",
+    "traverse": "^0.6.6"
+  }
+}
