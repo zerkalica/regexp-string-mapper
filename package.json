@@ -30,7 +30,7 @@
     "mocha": "^1.21.4"
   },
   "dependencies": {
-    "circular-serializer": "^0.0.3",
+    "circular-serializer": "^0.0.5",
     "moment": "^2.8.3",
     "traverse": "^0.6.6"
   }
