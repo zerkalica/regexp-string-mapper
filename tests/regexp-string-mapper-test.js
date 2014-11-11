@@ -1,8 +1,14 @@
 var expect = require('./test-helpers').expect;
 var RegExpStringMapper = require('../lib/regexp-string-mapper');
+var moment = require('moment');
+var Serializer = require('circular-serializer');
 
 describe('RegExpStringMapper', function () {
-  var mapper = RegExpStringMapper();
+  var serializer = Serializer();
+  var mapper = RegExpStringMapper({
+    moment: moment,
+    serialize: serializer.serialize.bind(serializer)
+  });
 
   var testMessage = '%time: YYYY-MM-DD% %testId% %testObj% %testObj.a% %testObj.e% %%rrr%%';
   var testTokens = {

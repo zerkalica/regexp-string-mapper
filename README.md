@@ -4,28 +4,31 @@ Map tokens in string to values. Supports custom token types
 
 ## Usage
 
-``` javascript
+```js
 var RegExpStringMapper = require('regexp-string-mapper');
+var moment = require('moment');
+var Serializer = require('circular-serializer');
 
 function MyType(name) {
   this.name = name;
 }
 
-var formatters = [
-  {
-    detect: function (value) {
-      return value instanceof MyType;
-    },
-    format: function (value, arg) {
-      return value[arg];
-    }
+var customFormatter = {
+  detect: function (value) {
+    return value instanceof MyType;
+  },
+  format: function (value, arg) {
+    return value[arg];
   }
-];
+};
 
+var serializer = Serializer();
 var mapper = RegExpStringMapper({
   separator: '%',
-  formatters: formatters.concat(RegExpStringMapper.defaultFormatters)
+  moment: moment,
+  serialize: serializer.serialize.bind(serializer)
 });
+mapper.addFormatter(customFormatter);
 
 var testMessage = '%time: YYYY-MM-DD% %testId% %testObj% %testObj.a% %testObj.e% %%rrr%% %my:name%';
 var testTokens = {
@@ -40,5 +43,4 @@ var testTokens = {
 
 console.log(mapper.map(testMessage, testTokens));
 // 2014-10-11 123 {"a":1,"b":[1,2]} 1 %rrr% test1
-
 ```

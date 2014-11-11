@@ -1,24 +1,27 @@
-var RegExpStringMapper = require('../lib/regexp-string-mapper');
+var RegExpStringMapper = require('..');
+var moment = require('moment');
+var Serializer = require('circular-serializer');
 
 function MyType(name) {
   this.name = name;
 }
 
-var formatters = [
-  {
-    detect: function (value) {
-      return value instanceof MyType;
-    },
-    format: function (value, arg) {
-      return value[arg];
-    }
+var customFormatter = {
+  detect: function (value) {
+    return value instanceof MyType;
+  },
+  format: function (value, arg) {
+    return value[arg];
   }
-];
+};
 
+var serializer = Serializer();
 var mapper = RegExpStringMapper({
   separator: '%',
-  formatters: formatters.concat(RegExpStringMapper.defaultFormatters)
+  moment: moment,
+  serialize: serializer.serialize.bind(serializer)
 });
+mapper.addFormatter(customFormatter);
 
 var testMessage = '%time: YYYY-MM-DD% %testId% %testObj% %testObj.a% %testObj.e% %%rrr%% %my:name%';
 var testTokens = {
