@@ -1,6 +1,5 @@
 var RegExpStringMapper = require('..');
 var moment = require('moment');
-var Serializer = require('circular-serializer');
 
 function MyType(name) {
   this.name = name;
@@ -18,8 +17,7 @@ var customFormatter = {
 var serializer = Serializer();
 var mapper = RegExpStringMapper({
   separator: '%',
-  moment: moment,
-  serialize: serializer.serialize.bind(serializer)
+  moment: moment
 });
 mapper.addFormatter(customFormatter);
 

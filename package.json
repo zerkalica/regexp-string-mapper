@@ -1,6 +1,6 @@
 {
   "name": "regexp-string-mapper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Map tokens in string to values. Supports custom token types",
   "main": "index.js",
   "scripts": {
@@ -27,11 +27,11 @@
   "homepage": "https://github.com/zerkalica/regexp-string-mapper",
   "devDependencies": {
     "chai": "^1.9.2",
-    "circular-serializer": "0.0.5",
     "mocha": "^1.21.4",
     "moment": "^2.8.3"
   },
   "dependencies": {
+    "circular-serializer": "0.0.5",
     "traverse": "^0.6.6"
   }
 }
